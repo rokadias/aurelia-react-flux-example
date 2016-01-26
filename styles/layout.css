@@ -1,0 +1,50 @@
+html {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.left-panel {
+  background-color: #DBECC9;
+  outline: none;
+}
+
+.nav-item {
+  background-color: #DBECC9!important;
+  border: none!important;
+  padding: 5px 15px!important;
+}
+
+#logout {
+  color: white;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.left-panel h5 {
+  padding-top: 5px;
+}
+
+.layout-header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom-width: 1px;
+  border-bottom: thin solid #000;
+}
+
+.page-host {
+    margin: 0 auto;
+}
+
+.navbar-nav li.loader {
+    margin: 12px 24px 0 6px;
+}
+
+.user-info img {
+    margin-left: 20px;
+}

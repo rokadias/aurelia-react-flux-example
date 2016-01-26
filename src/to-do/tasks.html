@@ -1,0 +1,12 @@
+<template>
+  <section class="au-animate">
+    <div class="row">
+      <require from='task-view' />
+      <div class="small-12 columns">
+        <div class="row" repeat.for="task of tasks">
+          <task-view task.bind="task" />
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

@@ -1,0 +1,17 @@
+<template>
+  <require from='./nav-bar'></require>
+  <div class="off-canvas-wrap" id="container" data-offcanvas>
+    <div class="inner-wrap">
+
+      <nav-bar router.bind="router" class="navbar-left"></nav-bar>
+
+      <section class="page-host main-section grid">
+        <div class="row small-centered">
+          <router-view></router-view>
+        </div>
+      </section>
+
+      <a class="exit-off-canvas"></a>
+    </div>
+  </div>
+</template>
