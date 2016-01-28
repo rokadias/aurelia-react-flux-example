@@ -1,4 +1,4 @@
-import {inject} from 'aurelia-framework';
+import {inject, bindable} from 'aurelia-framework';
 import {TaskStore} from './task.store';
 import {TaskActionConstants} from './task-action-constants';
 import {handle, Dispatcher} from 'aurelia-flux';
@@ -7,7 +7,7 @@ import {handle, Dispatcher} from 'aurelia-flux';
         TaskStore)
 export class ToDoList {
   heading = "To Do List";
-  tasks = [];
+  @bindable tasks = [];
 
   constructor(dispatcher,
               taskStore) {

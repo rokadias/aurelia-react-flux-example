@@ -6,7 +6,6 @@ import _ from 'lodash';
 
 @inject(HttpClient, Dispatcher)
 export class TaskStore {
-  tasks = [];
   url_tasks = '/data/tasks.json';
 
   constructor(http, dispatcher) {
@@ -20,9 +19,9 @@ export class TaskStore {
       return Promise.resolve(this.tasks);
     }
 
-    return this.http.get(url_tasks).then(tasks_response => {
+    return this.http.get(this.url_tasks).then(tasks_response => {
       this.tasks = JSON.parse(tasks_response.response);
-      this.dispatchTasksRetrieved(tasks);
+      this.dispatchTasksRetrieved(this.tasks);
     });
   }
 
