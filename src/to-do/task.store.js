@@ -12,22 +12,22 @@ export class TaskStore {
   constructor(http, dispatcher) {
     this.http = http;
     this.dispatcher = dispatcher;
-  }n
+  }
 
   requestTasks() {
     if (this.tasks) {
-      dispatchTasksRetrieved(this.tasks);
+      this.dispatchTasksRetrieved(this.tasks);
       return Promise.resolve(this.tasks);
     }
 
     return this.http.get(url_tasks).then(tasks_response => {
       this.tasks = JSON.parse(tasks_response.response);
-      dispatchTasksRetrieved(tasks);
+      this.dispatchTasksRetrieved(tasks);
     });
   }
 
   dispatchTasksRetrieved(tasks) {
-    this.dispatcher.dispatch(CrfActionConstants.TASKS_RETRIEVED, tasks);
+    this.dispatcher.dispatch(TaskActionConstants.TASKS_RETRIEVED, tasks);
   }
 
   @handle(TaskActionConstants.TASK_COMPLETED)

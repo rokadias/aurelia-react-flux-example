@@ -16,6 +16,7 @@
   "main": "dist/commonjs/index.js",
   "repository": {
     "type": "git",
+    "url": "https://github.com/rokadias/aurelia-react-flux-example"
   },
   "devDependencies": {
     "aurelia-tools": "^0.1.3",

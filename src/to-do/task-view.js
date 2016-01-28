@@ -1,7 +1,7 @@
 import {Dispatcher} from 'aurelia-flux';
 import React from 'react';
 import {customElement, inject, bindable, noView} from 'aurelia-framework';
-import {TaskStore} from 'task.store';
+import {TaskStore} from './task.store';
 
 var TaskViewElement = React.createClass({
   getInitialState: function() {

@@ -28,19 +28,27 @@ export default class {
       // the navigation bar
 
       config.map([
+        {
+          route: ['', 'todo/list'],
+          name: 'ToDoList',
+          moduleId: './to-do/list',
+          nav: true,
+          title: 'ToDo List',
+          authRoute: true
+        },
         // Users Section of the Site including logins
         {
           route: 'signup',
           name: 'signup',
-          moduleId: 'users/signup',
+          moduleId: './users/signup',
           nav: false,
           title: 'Signup',
-          authRoute: true
+          authRoute: false
         },
         {
           route: 'login',
           name: 'login',
-          moduleId: 'users/login',
+          moduleId: './users/login',
           nav: false,
           title: 'Login',
           authRoute: true

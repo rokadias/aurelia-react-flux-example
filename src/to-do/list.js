@@ -1,18 +1,16 @@
 import {inject} from 'aurelia-framework';
-import {TaskStore} from 'task.store';
+import {TaskStore} from './task.store';
+import {TaskActionConstants} from './task-action-constants';
 import {handle, Dispatcher} from 'aurelia-flux';
 
-@inject(HttpClient,
-        Dispatcher,
+@inject(Dispatcher,
         TaskStore)
 export class ToDoList {
   heading = "To Do List";
   tasks = [];
 
-  constructor(http,
-              dispatcher,
+  constructor(dispatcher,
               taskStore) {
-    this.http = http;
     this.dispatcher = dispatcher;
     this.taskStore = taskStore;
   }
