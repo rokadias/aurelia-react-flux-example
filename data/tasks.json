@@ -3,12 +3,12 @@
     "id": "create-site",
     "name": "Create Aurelia Site",
     "description": "Create Aurelia Site as an example of using react.",
-    "completeld": true
+    "completed": true
   },
   {
     "id": "update-url",
     "name": "Update Url of Site",
     "description": "Update the url of the newly created site to reflect it's purpose.",
-    "completeld": false
+    "completed": false
   }
 ]

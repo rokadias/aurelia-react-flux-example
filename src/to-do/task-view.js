@@ -1,5 +1,7 @@
 import {Dispatcher} from 'aurelia-flux';
 import React from 'react';
+import Checkbox from 'material-ui/lib/checkbox';
+import Paper from 'material-ui/lib/paper';
 import {customElement, inject, bindable, noView} from 'aurelia-framework';
 import {TaskStore} from './task.store';
 
@@ -10,18 +12,34 @@ var TaskViewElement = React.createClass({
     };
   },
   render: function() {
+    const style = {
+      width: '100%',
+      margin: 20,
+      padding: 20
+    };
     return (
-        <div key="this.state.task.id">
+        <Paper style={style} zDept={4} key="this.state.task.id">
+          <div className="TaskCompleted">
+            <Checkbox data-id={this.state.task.id} label="Completed" disabled={true} defaultChecked={this.state.task.completed} />
+          </div>
           <div className="TaskName">
-            Name: {this.state.task.name}
+            <div className="Label">
+              Name:
+            </div>
+            <div className="Value">
+              {this.state.task.name}
+            </div>
           </div>
           <div className="TaskDescription">
-            Description: {this.state.task.description}
+            <div className="Label">
+              Description:
+            </div>
+            <div className="Value">
+              {this.state.task.description}
+            </div>
+
           </div>
-          <div className="TaskCompleted">
-            <input data-id={this.state.task.id} type="checkbox" checked="this.state.task.completed" />
-          </div>
-        </div>
+        </Paper>
     );
   }
 });

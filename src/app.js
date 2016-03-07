@@ -11,6 +11,7 @@ import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import HttpClientConfig from 'paulvanbladel/aurelia-auth/app.httpClient.config';
 import AppRouterConfig from 'router-config';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 @inject(Router, HttpClientConfig, AppRouterConfig)
 export class App {
@@ -29,6 +30,7 @@ export class App {
 
   attached() {
     $(document).foundation();
+    injectTapEventPlugin();
   }
 
   activate() {
