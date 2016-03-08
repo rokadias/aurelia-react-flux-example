@@ -1,33 +1,8 @@
 <template>
-  <div if.bind="isAuthenticated">
-    <nav class="tab-bar">
-      <section class="left-small top-bar-section">
-        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
-      </section>
-
-      <section class="middle tab-bar-section">
-        <h1 class="title">Examples Yay!!</h1>
-      </section>
-
-      <section class="right tab-bar-section">
-        <div class="user-info">
-          Joe User
-          <img src="/images/joeuser.jpg"></img>
-          <a id="logout" route-href="route: logout">Logout</a>
-        </div>
-      </section>
+  <div>
+    <nav>
+      <require from="./app-bar"></require>
+      <app-bar title="To Do App" router.bind="router"></app-bar>
     </nav>
-
-    <aside class="left-off-canvas-menu">
-      <ul class="off-canvas-list">
-        <li><label>Something Routes</label></li>
-        <li>
-          <a route-href="route: something; params.bind: { id: 'something1' }">The something or the other</a>
-        </li>
-        <li>
-          <a route-href="route: settings">Settings</a>
-        </li>
-      </ul>
-    </aside>
   </div>
 </template>
