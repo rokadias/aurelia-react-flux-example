@@ -33,7 +33,15 @@ export default class {
           name: 'ToDoList',
           moduleId: './to-do/list',
           nav: true,
-          title: 'ToDo List',
+          title: 'To Do List',
+          authRoute: true
+        },
+        {
+          route: 'old/todo/list',
+          name: 'OldToDoList',
+          moduleId: './old/to-do/list',
+          nav: true,
+          title: 'Old To Do List',
           authRoute: true
         },
         // Users Section of the Site including logins

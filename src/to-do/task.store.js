@@ -2,7 +2,6 @@ import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
 import {handle, Dispatcher} from 'aurelia-flux';
 import {TaskActionConstants} from './task-action-constants';
-import _ from 'lodash';
 
 @inject(HttpClient, Dispatcher)
 export class TaskStore {

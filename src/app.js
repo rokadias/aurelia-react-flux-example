@@ -17,6 +17,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 export class App {
 
   constructor(router, httpClientConfig, appRouterConfig) {
+    injectTapEventPlugin();
 
     this.router = router;
 
@@ -26,11 +27,11 @@ export class App {
     // The applicaiton's configuration, including the
     // route definitions that we've declared in router-config.js
     this.appRouterConfig = appRouterConfig;
+
   }
 
   attached() {
     $(document).foundation();
-    injectTapEventPlugin();
   }
 
   activate() {
