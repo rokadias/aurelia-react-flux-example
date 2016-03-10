@@ -1,12 +1,3 @@
-import 'modernizr';
-import $ from 'jquery';
-import 'fastclick';
-import 'foundation';
-import 'foundation/css/foundation.css!';
-import 'foundation/js/foundation/foundation.offcanvas';
-import 'foundation/js/foundation/foundation.reveal';
-import 'foundation/js/foundation/foundation.topbar';
-
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import HttpClientConfig from 'paulvanbladel/aurelia-auth/app.httpClient.config';
@@ -31,7 +22,6 @@ export class App {
   }
 
   attached() {
-    $(document).foundation();
   }
 
   activate() {

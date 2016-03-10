@@ -37,8 +37,9 @@ body {
   border-bottom: thin solid #000;
 }
 
-.page-host {
+.main-section {
     margin: 0 auto;
+    max-width: 1200px;
 }
 
 .navbar-nav li.loader {

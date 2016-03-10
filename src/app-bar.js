@@ -20,14 +20,11 @@ const style = {
 };
 
 var AppBarElement = React.createClass({
-  menuItems: [
-    { route: '/todo/list', text: 'list' }
-  ],
   getInitialState: function() {
     return {
       router: this.props.router,
       title: this.props.title,
-      open: true
+      open: false
     };
   },
   menuIconClicked: function() {
