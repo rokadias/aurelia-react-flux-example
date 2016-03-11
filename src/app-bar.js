@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import AppBar from 'material-ui/lib/app-bar';
 import IconButton from 'material-ui/lib/icon-button';
 import LeftNav from 'material-ui/lib/left-nav';
@@ -78,7 +79,7 @@ export class AppBarView {
   }
 
   render() {
-    this.reactComponent = React.render(
+    this.reactComponent = ReactDOM.render(
       <AppBarElement
         router={this.router}
         title = {this.title} />,

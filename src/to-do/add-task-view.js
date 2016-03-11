@@ -1,5 +1,6 @@
 import {Dispatcher} from 'aurelia-flux';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import {customElement, inject, bindable, noView} from 'aurelia-framework';
@@ -40,7 +41,7 @@ export class AddTaskView {
   }
 
   render() {
-    this.reactComponent = React.render(
+    this.reactComponent = ReactDOM.render(
         <AddTaskElement
           disabled={this.disabled}
           dispatch={this.dispatcher.dispatch.bind(this.dispatcher)}

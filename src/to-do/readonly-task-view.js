@@ -1,5 +1,6 @@
 import {Dispatcher} from 'aurelia-flux';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Checkbox from 'material-ui/lib/checkbox';
 import Paper from 'material-ui/lib/paper';
 import RaisedButton from 'material-ui/lib/raised-button';
@@ -89,11 +90,11 @@ export class ReadonlyTaskView {
   }
 
   render() {
-    this.reactComponent = React.render(
+    this.reactComponent = ReactDOM.render((
         <ReadonlyTaskViewElement
             task={this.task}
-            dispatch={this.dispatcher.dispatch.bind(this.dispatcher)}  />,
-            this.element
+            dispatch={this.dispatcher.dispatch.bind(this.dispatcher)}  />
+        ),this.element
     );
   }
 

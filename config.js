@@ -57,6 +57,7 @@ System.config({
     "modernizr": "github:Modernizr/Modernizr@2.8.3",
     "paulvanbladel/aurelia-auth": "github:paulvanbladel/aurelia-auth@0.9.17",
     "react": "npm:react@0.14.7",
+    "react-dom": "npm:react-dom@0.14.7",
     "react-tap-event-plugin": "npm:react-tap-event-plugin@0.2.2",
     "react-utils": "npm:react-utils@1.0.0",
     "text": "github:systemjs/plugin-text@0.0.2",
