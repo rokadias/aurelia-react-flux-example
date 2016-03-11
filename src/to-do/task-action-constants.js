@@ -5,5 +5,7 @@ export const TaskActionConstants = {
   RETRIEVE_TASKS  : 'tasks.retrieve',
   TASKS_RETRIEVED : 'tasks.retrieved',
   TASK_COMPLETED: 'tasks.task.completed',
-  TASK_COMPLETE_CLEARED: 'tasks.task.cleared'
+  TASK_COMPLETE_CLEARED: 'tasks.task.cleared',
+  ADD_TASK: 'tasks.task.add',
+  TASK_ADDED: 'tasks.task.added'
 };

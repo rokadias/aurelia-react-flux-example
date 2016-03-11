@@ -2,6 +2,7 @@ import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
 import {handle, Dispatcher} from 'aurelia-flux';
 import {TaskActionConstants} from './task-action-constants';
+import _ from 'lodash';
 
 @inject(HttpClient, Dispatcher)
 export class TaskStore {
@@ -29,12 +30,24 @@ export class TaskStore {
   }
 
   @handle(TaskActionConstants.TASK_COMPLETED)
-  handleCrfFieldVerified(action, task) {
+  handleTaskCompleted(action, task) {
     task.completed = true;
   }
 
   @handle(TaskActionConstants.TASK_COMPLETE_CLEARED)
-  handleCrfFieldRejected(action, task) {
+  handleTaskCompleteCleared(action, task) {
     task.completed = false;
+  }
+
+  @handle(TaskActionConstants.ADD_TASK)
+  handleAddTask(action) {
+    var task = {
+      "id": "",
+      "name": "",
+      "description": "",
+      "completed": false
+    };
+    this.tasks.push(task);
+    this.dispatcher.dispatch(TaskActionConstants.TASKS_RETRIEVED, this.tasks);
   }
 }

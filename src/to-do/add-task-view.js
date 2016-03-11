@@ -1,16 +1,27 @@
+import {Dispatcher} from 'aurelia-flux';
 import React from 'react';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import {customElement, inject, bindable, noView} from 'aurelia-framework';
+import {TaskStore} from './task.store';
+import {TaskActionConstants} from './task-action-constants';
 
 var AddTaskElement = React.createClass({
+  getInitialState: function() {
+    return {
+      disabled: this.props.disabled
+    };
+  },
+  onAddClicked: function() {
+    this.props.dispatch(TaskActionConstants.ADD_TASK);
+  },
   render: function() {
     const style = {
       marginLeft: 15,
       float: 'right'
     };
     return (
-      <FloatingActionButton style={style}>
+      <FloatingActionButton style={style} disabled={this.state.disabled} onMouseDown={this.onAddClicked}>
         <ContentAdd />
       </FloatingActionButton>
     );
@@ -18,21 +29,33 @@ var AddTaskElement = React.createClass({
 });
 
 @noView
-@inject(Element)
+@inject(Element, Dispatcher)
 @customElement("add-task-view")
 export class AddTaskView {
-    constructor(element) {
-        this.element = element;
-    }
+  @bindable disabled = false;
 
-    render() {
-        this.reactComponent = React.render(
-            <AddTaskElement />,
-            this.element
-        );
-    }
+  constructor(element, dispatcher) {
+    this.element = element;
+    this.dispatcher = dispatcher;
+  }
 
-    bind() {
-        this.render();
-    }
+  render() {
+    this.reactComponent = React.render(
+        <AddTaskElement
+          disabled={this.disabled}
+          dispatch={this.dispatcher.dispatch.bind(this.dispatcher)}
+        />,
+      this.element
+    );
+  }
+
+  bind() {
+    this.render();
+  }
+
+  disbaledChanged() {
+    this.reactComponent.setState({
+      disabled: this.disabled
+    });
+  }
 };
