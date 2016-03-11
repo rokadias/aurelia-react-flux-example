@@ -59,6 +59,17 @@ ul.title-area li.name {
     float: right;
 }
 
+.ReadonlyTaskView {
+    position: relative;
+}
+
+.EditTaskButton {
+    position: absolute;
+    margin-top: 15px;
+    bottom: 10px;
+    right: 15px;
+}
+
 /* animation definitions */
 @-webkit-keyframes fadeInRight {
   0% {

@@ -7,5 +7,6 @@ export const TaskActionConstants = {
   TASK_COMPLETED: 'tasks.task.completed',
   TASK_COMPLETE_CLEARED: 'tasks.task.cleared',
   ADD_TASK: 'tasks.task.add',
-  TASK_ADDED: 'tasks.task.added'
+  TASK_ADDED: 'tasks.task.added',
+  EDIT_TASK: 'tasks.task.edit'
 };
