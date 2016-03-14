@@ -1,33 +1,9 @@
 import {Dispatcher} from 'aurelia-flux';
-import React from 'react';
 import ReactDOM from 'react-dom';
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import {customElement, inject, bindable, noView} from 'aurelia-framework';
 import {TaskStore} from './task.store';
 import {TaskActionConstants} from './task-action-constants';
-
-var AddTaskElement = React.createClass({
-  getInitialState: function() {
-    return {
-      disabled: this.props.disabled
-    };
-  },
-  onAddClicked: function() {
-    this.props.dispatch(TaskActionConstants.ADD_TASK);
-  },
-  render: function() {
-    const style = {
-      marginLeft: 15,
-      float: 'right'
-    };
-    return (
-      <FloatingActionButton style={style} disabled={this.state.disabled} onMouseDown={this.onAddClicked}>
-        <ContentAdd />
-      </FloatingActionButton>
-    );
-  }
-});
+import AddTaskElement from './add-task-view-element';
 
 @noView
 @inject(Element, Dispatcher)

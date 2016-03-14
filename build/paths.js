@@ -7,6 +7,7 @@ var outputRoot = 'dist/';
 module.exports = {
   root: appRoot,
   source: appRoot + '**/*.js',
+  sourceJsx: appRoot + '**/*.jsx',
   serverSource: serverRoot + '**/*.js',
   json: serverRoot + '**/*.json',
   html: appRoot + '**/*.html',

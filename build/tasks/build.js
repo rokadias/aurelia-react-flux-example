@@ -22,6 +22,19 @@ gulp.task('build-system', function () {
     .pipe(gulp.dest(paths.output));
 });
 
+// transpiles changed jsx files to systemjs format
+// and changes extension to .jsx.js
+gulp.task('build-jsx', function() {
+  return gulp.src(paths.sourceJsx)
+    .pipe(plumber())
+    .pipe(changed(paths.output, {extension: '.jsx'}))
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(to5({ presets: ['react']}))
+    .pipe(to5(assign({}, compilerOptions, {modules:'system'})))
+    .pipe(sourcemaps.write({includeContent: true}))
+    .pipe(gulp.dest(paths.output));
+});
+
 // copies changed html files to the output directory
 gulp.task('build-html', function () {
   return gulp.src(paths.html)
@@ -64,7 +77,7 @@ gulp.task('build-json', function() {
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
-    ['build-system', 'build-html', 'build-server', 'build-json'],
+    ['build-system', 'build-jsx', 'build-html', 'build-server', 'build-json'],
     callback
   );
 });
