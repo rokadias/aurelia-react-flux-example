@@ -84,8 +84,8 @@
       "text": "github:systemjs/plugin-text@^0.0.2"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@*",
-      "babel-runtime": "npm:babel-runtime@*",
+      "babel": "npm:babel-core@^6.7.2",
+      "babel-runtime": "npm:babel-runtime@^6.6.1",
       "core-js": "npm:core-js@^1.0.0"
     }
   },
