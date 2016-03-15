@@ -20,14 +20,14 @@ Next we'll want to install jspm and gulp since those will be the tools we'll use
 
 Now to install dependencies that this project has and local to only the web directory.
 
-    cd ~/aurelia-react-flux-example/ui/
+    cd ~/aurelia-react-flux-example/
     npm install
     jspm install -y
 
 ### Running the Web Application locally
 It's as simple as running...
 
-     cd ~/aurelia-react-flux-example/ui/
+     cd ~/aurelia-react-flux-example/
      gulp watch
 
 This should start a simple http webserver at http://localhost:9000
