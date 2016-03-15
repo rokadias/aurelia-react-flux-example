@@ -1,11 +1,11 @@
 module.exports = {
-  modules: 'system',
   moduleIds: false,
   comments: false,
   compact: false,
-  stage:2,
-  optional: [
-    "es7.decorators",
-    "es7.classProperties"
+  presets: ['react', 'stage-2'],
+  plugins: [
+    'transform-es2015-modules-systemjs',
+    'transform-decorators-legacy',
+    'transform-class-properties'
   ]
 };

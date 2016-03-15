@@ -17,7 +17,7 @@ gulp.task('build-system', function () {
     .pipe(plumber())
     .pipe(changed(paths.output, {extension: '.js'}))
     .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(to5(assign({}, compilerOptions, {modules:'system'})))
+    .pipe(to5(compilerOptions))
     .pipe(sourcemaps.write({includeContent: true}))
     .pipe(gulp.dest(paths.output));
 });
@@ -29,8 +29,7 @@ gulp.task('build-jsx', function() {
     .pipe(plumber())
     .pipe(changed(paths.output, {extension: '.jsx'}))
     .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(to5({ presets: ['react']}))
-    .pipe(to5(assign({}, compilerOptions, {modules:'system'})))
+    .pipe(to5(compilerOptions))
     .pipe(sourcemaps.write({includeContent: true}))
     .pipe(gulp.dest(paths.output));
 });
@@ -46,19 +45,11 @@ gulp.task('build-html', function () {
   Task to compile server js code with babel
  */
 gulp.task('build-server', function () {
-  var compilerOptions = {
-    modules: 'common',
-    moduleIds: false,
-    comments: false,
-    compact: false,
-    stage:2,
-    optional: ["es7.decorators", "es7.classProperties"]
-  };
   return gulp.src(paths.serverSource)
     .pipe(plumber())
     .pipe(changed(paths.output, {extension: '.js'}))
     .pipe(sourcemaps.init())
-    .pipe(to5(assign({}, compilerOptions, {modules:'common'})))
+    .pipe(to5(assign({}, compilerOptions, { plugins: ['transform-es2015-modules-commonjs'] })))
     .pipe(sourcemaps.write({includeContent: false}))
     .pipe(gulp.dest(paths.output));
 });
