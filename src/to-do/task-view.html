@@ -1,4 +1,6 @@
 <template>
   <require from='./readonly-task-view'></require>
   <readonly-task-view show.bind="editing == false" task.bind="task"></readonly-task-view>
+  <require from='./edit-task-view'></require>
+  <edit-task-view show.bind="editing" task.bind="task"></edit-task-view>
 </template>

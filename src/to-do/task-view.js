@@ -23,4 +23,11 @@ export class TaskView {
       this.editing = true;
     }
   }
+
+  @handle(TaskActionConstants.TASK_ADDED)
+  handleTaskAdded(action, task) {
+    if (this.task === task) {
+      this.editing = true;
+    }
+  }
 };

@@ -49,5 +49,6 @@ export class TaskStore {
     };
     this.tasks.push(task);
     this.dispatcher.dispatch(TaskActionConstants.TASKS_RETRIEVED, this.tasks);
+    this.dispatcher.dispatch(TaskActionConstants.TASK_ADDED, task);
   }
 }
