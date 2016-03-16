@@ -35,7 +35,7 @@ var ReadonlyTaskViewElement = React.createClass({
     return (
         <Paper className="ReadonlyTaskView" style={style} zDept={4} key="this.state.task.id">
           <div className="TaskCompleted">
-            <Checkbox r
+            <Checkbox
               ref={(ref) => this.completed = ref}
               data-id={this.state.task.id}
               label="Completed"

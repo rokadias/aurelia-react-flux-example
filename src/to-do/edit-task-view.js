@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Checkbox from 'material-ui/lib/checkbox';
 import Paper from 'material-ui/lib/paper';
+import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
 import {customElement, inject, bindable, noView} from 'aurelia-framework';
 import {TaskStore} from './task.store';
@@ -14,7 +15,19 @@ var EditTaskViewElement = React.createClass({
       task: this.props.task
     };
   },
+  onEditClick: function() {
+    var task = this.state.task;
+    task.completed = this.completed.isChecked();
+    task.name = this.taskName.getValue();
+    task.description = this.taskDescription.getValue();
+    this.props.dispatch(TaskActionConstants.SAVE_EDIT_TASK, task);
+  },
   render: function() {
+    const buttonStyle = {
+      margin: 12,
+      float: "right"
+    };
+
     const style = {
       margin: 10,
       padding: 20
@@ -22,7 +35,7 @@ var EditTaskViewElement = React.createClass({
     return (
       <Paper className="EditTaskView" style={style} zDept={4} key="this.state.task.id">
         <div className="TaskCompleted">
-          <Checkbox r
+          <Checkbox
             ref={(ref) => this.completed = ref}
             data-id={this.state.task.id}
             label="Completed"
@@ -32,6 +45,7 @@ var EditTaskViewElement = React.createClass({
         <div className="TaskName">
           <div className="Value">
             <TextField
+              ref={(ref) => this.taskName = ref}
               hintText="Grab Milk from Grocery Store"
               floatingLabelText="Name Field"
               defaultValue={this.state.task.name}
@@ -41,6 +55,7 @@ var EditTaskViewElement = React.createClass({
         <div className="TaskDescription">
           <div className="Value">
             <TextField
+              ref={(ref) => this.taskDescription = ref}
               hintText="Grab Milk for Conference Tomorrow"
               floatingLabelText="Description Field"
               defaultValue={this.state.task.description}
@@ -48,6 +63,18 @@ var EditTaskViewElement = React.createClass({
             />
           </div>
         </div>
+        <RaisedButton
+          label="Cancel"
+          style={buttonStyle}
+          labelPosition="before"
+        />
+        <RaisedButton
+          label="Save"
+          style={buttonStyle}
+          labelPosition="before"
+          onMouseDown={this.onEditClick}
+        />
+        <div style={ {  clear: "both" } } />
       </Paper>
     );
   }

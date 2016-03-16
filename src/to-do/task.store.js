@@ -47,8 +47,20 @@ export class TaskStore {
       "description": "",
       "completed": false
     };
+    task.editing = true;
     this.tasks.push(task);
     this.dispatcher.dispatch(TaskActionConstants.TASKS_RETRIEVED, this.tasks);
     this.dispatcher.dispatch(TaskActionConstants.TASK_ADDED, task);
+  }
+
+  @handle(TaskActionConstants.SAVE_EDIT_TASK)
+  handleEditTask(action, task) {
+    _.remove(this.tasks, function(iTask) {
+      return task === iTask || task.id === iTask.id;
+    });
+    task.id = task.name.replace(" ", "_").trim().toLowerCase();
+    task.editing = false;
+    this.tasks.push(task);
+    this.dispatcher.dispatch(TaskActionConstants.TASKS_RETRIEVED, this.tasks);
   }
 }

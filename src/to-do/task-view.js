@@ -1,4 +1,4 @@
-import {handle, Dispatcher} from 'aurelia-flux';
+import {handle, waitFor, Dispatcher} from 'aurelia-flux';
 import React from 'react';
 import {customElement, inject, bindable, noView} from 'aurelia-framework';
 import {TaskActionConstants} from './task-action-constants';
@@ -17,17 +17,30 @@ export class TaskView {
     this.taskStore = taskStore;
   }
 
+  @handle(TaskActionConstants.SAVE_EDIT_TASK)
+  @waitFor(TaskStore)
+  handleSaveEditTask(action, task) {
+    if (this.task === task) {
+      this.taskChanged();
+    }
+  }
+
   @handle(TaskActionConstants.EDIT_TASK)
   handleEditTask(action, task) {
     if (this.task === task) {
-      this.editing = true;
+      task.editing = true;
+      this.taskChanged();
     }
   }
 
   @handle(TaskActionConstants.TASK_ADDED)
   handleTaskAdded(action, task) {
     if (this.task === task) {
-      this.editing = true;
+      this.taskChanged();
     }
+  }
+
+  taskChanged() {
+    this.editing = !!this.task.editing;
   }
 };
