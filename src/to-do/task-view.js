@@ -8,8 +8,6 @@ import {TaskStore} from './task.store';
 @customElement('task-view')
 export class TaskView {
   @bindable task = {};
-  @bindable edit_task = {};
-  @bindable readonly_task = {};
   @bindable editing = false;
   dispatcher = null;
 
@@ -52,14 +50,7 @@ export class TaskView {
     }
   }
 
-  bind() {
-    this.edit_task = this.task;
-    this.readonly_task = this.edit_task;
-  }
-
   taskChanged() {
     this.editing = !!this.task.editing;
-    this.edit_task = this.task;
-    this.readonly_task = this.edit_task;
   }
 };
