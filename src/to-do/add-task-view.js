@@ -18,7 +18,8 @@ var AddTaskElement = React.createClass({
   },
   render: function() {
     const style = {
-      marginLeft: 15,
+      marginTop: 10,
+      marginRight: 20,
       float: 'right'
     };
     return (

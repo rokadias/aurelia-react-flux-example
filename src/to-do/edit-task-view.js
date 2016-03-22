@@ -16,11 +16,18 @@ var EditTaskViewElement = React.createClass({
     };
   },
   onEditClick: function() {
-    var task = this.state.task;
-    task.completed = this.completed.isChecked();
-    task.name = this.taskName.getValue();
-    task.description = this.taskDescription.getValue();
+    var task = {
+      clientId: this.state.task.clientId,
+      id: this.state.task.id,
+      completed: this.completed.isChecked(),
+      name: this.taskName.getValue(),
+      description: this.taskDescription.getValue()
+    };
     this.props.dispatch(TaskActionConstants.SAVE_EDIT_TASK, task);
+  },
+  onCancelClick: function() {
+    this.setState({ task: this.props.task });
+    this.props.dispatch(TaskActionConstants.CANCEL_EDIT_TASK, this.props.task);
   },
   render: function() {
     const buttonStyle = {
@@ -67,6 +74,7 @@ var EditTaskViewElement = React.createClass({
           label="Cancel"
           style={buttonStyle}
           labelPosition="before"
+          onMouseDown={this.onCancelClick}
         />
         <RaisedButton
           label="Save"

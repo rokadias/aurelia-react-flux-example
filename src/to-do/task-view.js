@@ -8,6 +8,8 @@ import {TaskStore} from './task.store';
 @customElement('task-view')
 export class TaskView {
   @bindable task = {};
+  @bindable edit_task = {};
+  @bindable readonly_task = {};
   @bindable editing = false;
   dispatcher = null;
 
@@ -20,14 +22,24 @@ export class TaskView {
   @handle(TaskActionConstants.SAVE_EDIT_TASK)
   @waitFor(TaskStore)
   handleSaveEditTask(action, task) {
-    if (this.task === task) {
+    if (this.task.clientId === task.clientId) {
+      this.task = task;
+      this.taskChanged();
+    }
+  }
+
+  @handle(TaskActionConstants.CANCEL_EDIT_TASK)
+  @waitFor(TaskStore)
+  handleCancelEditTask(action, task) {
+    if (this.task.clientId == task.clientId) {
+      this.task = task;
       this.taskChanged();
     }
   }
 
   @handle(TaskActionConstants.EDIT_TASK)
   handleEditTask(action, task) {
-    if (this.task === task) {
+    if (this.task.clientId === task.clientId) {
       task.editing = true;
       this.taskChanged();
     }
@@ -35,12 +47,19 @@ export class TaskView {
 
   @handle(TaskActionConstants.TASK_ADDED)
   handleTaskAdded(action, task) {
-    if (this.task === task) {
+    if (this.task.clientId === task.clientId) {
       this.taskChanged();
     }
   }
 
+  bind() {
+    this.edit_task = this.task;
+    this.readonly_task = this.edit_task;
+  }
+
   taskChanged() {
     this.editing = !!this.task.editing;
+    this.edit_task = this.task;
+    this.readonly_task = this.edit_task;
   }
 };

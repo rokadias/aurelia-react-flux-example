@@ -90,12 +90,16 @@ export class ReadonlyTaskView {
   }
 
   render() {
-    this.reactComponent = ReactDOM.render((
-        <ReadonlyTaskViewElement
-            task={this.task}
-            dispatch={this.dispatcher.dispatch.bind(this.dispatcher)}  />
-        ),this.element
-    );
+    if (this.reactComponent === null) {
+      this.reactComponent = ReactDOM.render((
+          <ReadonlyTaskViewElement
+              task={this.task}
+              dispatch={this.dispatcher.dispatch.bind(this.dispatcher)}  />
+          ),this.element
+      );
+    } else {
+      this.taskChanged();
+    }
   }
 
   bind() {
